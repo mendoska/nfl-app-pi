@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv = "refresh" content ="10">
+	<title> NFL app </title>
+</head>
+<body>
+	<h1> This is my NFL app </h1>
+	<ul>
+		{% for game in games %}
+			<li> {{game.home}} {{game.home_score}} - {{game.away}} {{game.away_score}}
+				({{game.status}})
+			</li>
+		{% endfor %}
+	</ul>
+</body>
+
+</html>
