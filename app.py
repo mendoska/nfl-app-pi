@@ -1,7 +1,7 @@
 import random 
 import requests
 from flask import Flask, render_template 
-
+#test
 app = Flask (__name__)
 
 def fetch_espn_games():
@@ -52,7 +52,7 @@ def fetch_espn_games():
 			"away": away_team,
 			"home_score": home_score,
 			"away_score": away_score,
-			"status_text":status,
+			"status_texts":status,
 			"status_state": status_state
 		})
 	return games
