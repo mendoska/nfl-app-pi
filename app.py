@@ -20,6 +20,16 @@ def fetch_espn_games():
 		competitors = competition ["competitors"]
 		#fetching status of the game
 		status = competition["status"]["type"]["detail"]
+		#state to show if game is live or not
+		state = competition["status"]["type"]["state"] 
+
+		#cleaning state verbage from espn API 
+		if state == "in":
+			status_state = "LIVE"
+		elif state == "post":
+			status_state = "FINAL"
+		else:
+			status_state = "UPCOMING"
 
 		home_team = None
 		away_team = None
@@ -42,7 +52,8 @@ def fetch_espn_games():
 			"away": away_team,
 			"home_score": home_score,
 			"away_score": away_score,
-			"status":status
+			"status_text":status,
+			"status_state": status_state
 		})
 	return games
 
