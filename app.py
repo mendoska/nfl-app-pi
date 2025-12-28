@@ -3,6 +3,7 @@ import requests
 from flask import Flask, render_template 
 
 app = Flask (__name__)
+#testing local connection
 
 def fetch_espn_games():
 	url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
