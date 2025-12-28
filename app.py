@@ -53,7 +53,7 @@ def fetch_espn_games():
 			"away": away_team,
 			"home_score": home_score,
 			"away_score": away_score,
-			"status_texts":status,
+			"status_text":status,
 			"status_state": status_state
 		})
 	return games

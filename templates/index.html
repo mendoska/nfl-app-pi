@@ -24,7 +24,7 @@
 	<h1> This is my NFL app </h1>
 	<ul>
 		{% for game in games %}
-			<li class = {{game.status_state|lower}}> 
+			<li class = "{{ game.status_state|lower }}"> 
 				{{game.home}} {{game.home_score}}
 				 - 
 				 {{game.away}} {{game.away_score}}
