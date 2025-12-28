@@ -55,6 +55,14 @@ def fetch_espn_games():
 			"status_text":status,
 			"status_state": status_state
 		})
+
+		#this is how we will sort the priority list for games
+		priority = {
+			"LIVE": 0,
+			"UPCOMING": 1,
+			"FINAL":2
+		}
+		games.sort (key = lambda game:priority[game["status_state"]])
 	return games
 
 @app.route("/")
