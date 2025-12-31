@@ -70,8 +70,8 @@ def fetch_espn_games(url):
 @app.route("/")
 def home():
 	NFL_url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
-	NHL_url = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
-	games = fetch_espn_games()
+	# NHL_url = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
+	games = fetch_espn_games(NFL_url)
 	#instead of returning text, now we look for HTML
 	return render_template('index.html', games=games)
 
