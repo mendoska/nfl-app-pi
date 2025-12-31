@@ -73,7 +73,17 @@ def home():
 	# NHL_url = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
 	games = fetch_espn_games(NFL_url)
 	#instead of returning text, now we look for HTML
-	return render_template('index.html', games=games)
+	return render_template('index.html', games=games, league = "NFL")
+
+
+
+
+@app.route("/nhl")
+def nhl():
+	NHL_url = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
+	games = fetch_espn_games(NHL_url)
+	#instead of returning text, now we look for HTML
+	return render_template('index.html', games=games, league = "NHL")
 
 if __name__ == "__main__":
  	app.run(host = "0.0.0.0", port = 5000)
