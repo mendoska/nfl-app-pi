@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta http-equiv = "refresh" content ="10">
-	<title> NFL app </title>
+	<title> {{league}} app </title>
 	<!-- using inline for now -->
 	<style>
   .live {
@@ -21,7 +21,7 @@
 
 </head>
 <body>
-	<h1> {{"league"}} scores </h1>
+	<h1> {{ league }} scores </h1>
 	<ul>
 		{% for game in games %}
 			<li class = "{{ game.status_state|lower }}"> 
