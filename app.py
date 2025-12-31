@@ -4,8 +4,8 @@ from flask import Flask, render_template
 
 app = Flask (__name__)
 
-def fetch_espn_games():
-	url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+def fetch_espn_games(url):
+	# url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
 	response = requests.get(url,timeout=10)
 	data = response.json()
 
@@ -63,10 +63,14 @@ def fetch_espn_games():
 			"FINAL":2
 		}
 		games.sort (key = lambda game:priority[game["status_state"]])
+
+	sections = {}
 	return games
 
 @app.route("/")
 def home():
+	NFL_url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
+	NHL_url = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
 	games = fetch_espn_games()
 	#instead of returning text, now we look for HTML
 	return render_template('index.html', games=games)
