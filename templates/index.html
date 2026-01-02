@@ -2,6 +2,10 @@
 <html>
 <head>
 	<meta http-equiv = "refresh" content ="10">
+	<p> <a href = "/nhl">Hockey Scores</a> </p>
+	<p> <a href = "/">NFL Scores</a> </p>
+	<p> <a href = "/nba">NBA Scores</a> </p>
+
 	<title> {{league}} app </title>
 	<!-- using inline for now -->
 <style>
@@ -88,7 +92,7 @@ h1 {
   border: 1px solid rgba(0,0,0,0.08);
 }
 
-/* status colors (keep your logic, nicer look) */
+/* status colors */
 .live .badge { background: rgba(0, 128, 0, 0.12); color: #0b6b0b; }
 .final .badge { background: rgba(120,120,120,0.12); color: #555; }
 .upcoming .badge { background: rgba(0,0,0,0.06); color: #222; }
@@ -97,6 +101,7 @@ h1 {
 
 </head>
 <body>
+  <div class = "container">
 	<h1> {{ league }} scores </h1>
 	<ul class = "games">
 	  {% for game in games %}
@@ -130,8 +135,8 @@ h1 {
 		{% endfor %}
 	</ul>
 
-<p> <a href = "/nhl">Hockey Scores</a> </p>
-<p> <a href = "/">NFL Scores</a> </p>
+
+  </div>
 </body>
 
 </html>
