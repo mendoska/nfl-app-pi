@@ -4,37 +4,128 @@
 	<meta http-equiv = "refresh" content ="10">
 	<title> {{league}} app </title>
 	<!-- using inline for now -->
-	<style>
-  .live {
-    color: green;
-    font-weight: bold;
-  }
+<style>
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #f6f7fb;
+  margin: 0;
+  padding: 24px;
+}
 
-  .final {
-    color: gray;
-  }
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
 
-  .upcoming {
-    color: black;
-  }
+h1 {
+  margin: 0 0 16px 0;
+  font-size: 28px;
+}
+
+.games {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.game-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+.team-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.logo {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.team-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-score {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* status colors (keep your logic, nicer look) */
+.live .badge { background: rgba(0, 128, 0, 0.12); color: #0b6b0b; }
+.final .badge { background: rgba(120,120,120,0.12); color: #555; }
+.upcoming .badge { background: rgba(0,0,0,0.06); color: #222; }
+
 </style>
 
 </head>
 <body>
 	<h1> {{ league }} scores </h1>
-	<ul>
-		{% for game in games %}
-			<li class = "{{ game.status_state|lower }}"> 
-				{% if game.home_logo%} 
-				<img src = "{{game.home_logo}}" height ="24" style = "vertical-align: middle;"> 
+	<ul class = "games">
+	  {% for game in games %}
+	    <li class = "game-card {{ game.status_state|lower }}"> 
+		  <div class = "teams">
+			<div class = "team-row">
+			  <div class= "team-left">
+				{% if game.away_logo%} 
+				  <img class ="logo"src = "{{game.away_logo}}" alt = "{{game.away}} logo">
 				{%endif%}
-				{{game.home}} {{game.home_score}}
-				 - 
-				 {% if game.away_logo%} 
-				<img src = "{{game.away_logo}}" height ="24" style = "vertical-align: middle;"> 
-				 {%endif%}
-				 {{game.away}} {{game.away_score}}
-				({{game.status_text}})
+				<span class = "team-name">{{game.away}}</span>
+			   </div>
+				<span class = "team-score">{{game.away_score}}</span>
+			</div>
+				
+			  <div class = "team-row">
+			    <div class= "team-left">
+				{% if game.home_logo%} 
+				  <img class="logo" src = "{{game.home_logo}}" alt = "{{game.home}} logo"> 
+				{%endif%}
+				<span class = "team-name">{{game.home}}</span>
+			    </div>
+				<span class = "team-score"> {{game.home_score}}</span>
+			  </div>
+			</div> 
+			<div class ="meta">
+			  <span class = "badge">{{game.status_state}}</span>
+			  <span class = "detail">{{game.status_text}}</span>		 
+			</div>
 			</li>
 		{% endfor %}
 	</ul>
