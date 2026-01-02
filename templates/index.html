@@ -25,8 +25,14 @@
 	<ul>
 		{% for game in games %}
 			<li class = "{{ game.status_state|lower }}"> 
+				{% if game.home_logo%} 
+				<img src = "{{game.home_logo}}" height ="24" style = "vertical-align: middle;"> 
+				{%endif%}
 				{{game.home}} {{game.home_score}}
 				 - 
+				 {% if game.away_logo%} 
+				<img src = "{{game.away_logo}}" height ="24" style = "vertical-align: middle;"> 
+				 {%endif%}
 				 {{game.away}} {{game.away_score}}
 				({{game.status_text}})
 			</li>

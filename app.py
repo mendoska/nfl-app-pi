@@ -34,24 +34,34 @@ def fetch_espn_games(url):
 		home_team = None
 		away_team = None
 		home_score = 0
-		away_score = 0 
+		away_score = 0
+		home_logo = ""
+		away_logo = "" 
+
+
 
 		#now that we have competitors
 		for c in competitors:
 			team_name = c["team"]["displayName"]
 			score = int (c.get("score",0))
+			#learned version, if logo exist -> logo, otherwise empty string to avoid crash
+			logo_url = c["team"].get("logo","")
 
 			if c["homeAway"] == "home":
 				home_team = team_name
 				home_score = score
+				home_logo = logo_url
 			else:
 				away_team = team_name
 				away_score = score 
+				away_logo = logo_url
 		games.append({
 			"home": home_team,
 			"away": away_team,
 			"home_score": home_score,
 			"away_score": away_score,
+			"home_logo" : home_logo,
+			"away_logo" : away_logo,
 			"status_text":status,
 			"status_state": status_state
 		})
