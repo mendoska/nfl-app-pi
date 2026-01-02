@@ -3,12 +3,12 @@
  <head>
   <meta http-equiv = "refresh" content ="10">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title> {{league}} app </title>
+    <title> {{league}} </title>
 
  </head>
-<body>
+<body class ="dark">
   <div class = "container">
-	<h1> {{ league }} scores </h1>
+	<h1> {{ league }} Scores </h1>
 	<ul class = "games">
 	  {% for game in games %}
 	    <li class = "game-card {{ game.status_state|lower }}"> 
