@@ -6,7 +6,7 @@
     <title> {{league}} </title>
 
  </head>
-<body class ="dark">
+<body>
   <div class = "container">
 	<button id="themeToggle" class="toggle">Toggle dark mode</button>
 
@@ -47,12 +47,7 @@
 	<p> <a href = "/">NFL Scores</a> </p>
 	<p> <a href = "/nba">NBA Scores</a> </p>
   </div>
-  <script> 
-	const btn = document.getElementById("themeToggle");
-	btn.addEventListener("click", () => {
-		document.body.classList.toggle("dark");
-	});
-  </script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 
