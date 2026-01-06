@@ -2,11 +2,13 @@
     --bg:#f6f7fb;
     --text: #111111;
     --card : #ffffff;
+    --border: rgba(0,0,0,0.06);
 }
 body.dark{
     --bg:#0b0f1a;
     --text:#e5e7eb;
-    --card:#111827
+    --card:#111827;
+    --border: rgba(255,255,255,0.08)
 }
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -113,8 +115,8 @@ body.dark .toggle {
 
 /* navbar */
 body.dark .navbar {
-  background-color: var (--card);
-  border:1px solid var (--border)
+  background-color: var(--card);
+  border:1px solid var(--border)
 }
 
 /* Make brand + links readable */
