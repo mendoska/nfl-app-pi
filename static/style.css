@@ -104,12 +104,15 @@ h1 {
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 12px;
+  margin-left:auto;
 }
 
 body.dark .toggle {
   background: #111827;
   color: var(--text);
   border-color: rgba(255,255,255,0.14);
+  margin-left:auto;
+
 }
 
 
