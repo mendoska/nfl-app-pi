@@ -115,7 +115,7 @@ body.dark .toggle {
 
 /* navbar */
 body.dark .navbar {
-  background-color: var(--card);
+  background-color: var(--card) !important;
   border:1px solid var(--border)
 }
 
