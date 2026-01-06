@@ -2,11 +2,13 @@
     --bg:#f6f7fb;
     --text: #111111;
     --card : #ffffff;
+    --border: rgba(0,0,0,0.06);
 }
 body.dark{
     --bg:#0b0f1a;
     --text:#e5e7eb;
-    --card:#111827
+    --card:#111827;
+    --border: rgba(255,255,255,0.08)
 }
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -91,7 +93,7 @@ h1 {
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.3px;
-  border: 1px solid rgba(0,0,0,0.08);
+  border: 1px solid rgba(255, 247, 247, 0.08);
 }
 
 .toggle {
@@ -110,6 +112,37 @@ body.dark .toggle {
   border-color: rgba(255,255,255,0.14);
 }
 
+/* "status" text */
+body.dark .badge{
+  color: var(--text);
+}
+
+/* date text */
+
+body.dark .detail{
+  color: var(--text);
+}
+
+/* navbar */
+body.dark .navbar {
+  background-color: var(--card) !important;
+  border:1px solid var(--border)
+}
+
+/* Make brand + links readable */
+body.dark .navbar .nav-link,
+body.dark .navbar .navbar-brand {
+  color: var(--text) !important;
+}
+
+/* Toggler icon (hamburger) in dark mode */
+body.dark .navbar-light .navbar-toggler {
+  border-color: rgba(255,255,255,0.25);
+}
+
+body.dark .navbar-light .navbar-toggler-icon {
+  filter: invert(1);
+}
 
 /* status colors */
 .live .badge { background: rgba(0, 128, 0, 0.12); color: #0b6b0b; }
