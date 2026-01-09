@@ -1,4 +1,4 @@
-import random 
+import os
 import requests
 from flask import Flask, render_template 
 
@@ -103,5 +103,6 @@ def nba():
 	#instead of returning text, now we look for HTML
 	return render_template('index.html', games=games, league = "NBA")
 
-if __name__ == "__main__":
- 	app.run(host = "0.0.0.0", port = 5050)
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))  # Render sets PORT
+    app.run(host='0.0.0.0', port=port)  # Must bind to 0.0.0.0
