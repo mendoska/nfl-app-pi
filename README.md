@@ -19,7 +19,7 @@ A real-time sports scoring application that displays live game data from the ESP
 - Clean, responsive interface
 - Upcoming game schedules
 
-# Challenges:
+<!-- # Challenges: -->
 
 
 

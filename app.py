@@ -2,7 +2,23 @@ import os
 import requests
 from flask import Flask, render_template 
 
+#needed to connect database later
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
+
 app = Flask (__name__)
+
+# Configuration for the database
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-later')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///local_dev.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Fix Render's PostgreSQL URL format (they use postgres:// but SQLAlchemy needs postgresql://)
+if app.config['SQLALCHEMY_DATABASE_URI'].startswith('postgres://'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'].replace('postgres://', 'postgresql://', 1)
+
+# Initialize the database
+db = SQLAlchemy(app)
 
 def fetch_espn_games(url):
 	# url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard"
