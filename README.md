@@ -1,6 +1,6 @@
 # Sport App 
 
-<!-- ![](https://github.com/mendoska/cryptography-project/blob/main/cryptography-demo.gif) {:width="300px"} -->
+![](https://github.com/mendoska/nfl-app-pi/blob/main/nfl-app.gif) {:width="300px"}
 A real-time sports scoring application that displays live game data from the ESPN API.
 
 **Live Demo:** https://sports-scoring-app-ksa1.onrender.com/
