@@ -19,3 +19,22 @@ class User(db.Model):
     password_hash = db.Column (db.Sring (255), nullable = False)
     created_at = db.Column (db.DateTime, default = datetime.utcnow)
     
+    def __repr__(self):
+        return f'<User {self.username}>'
+
+class Favorite (db.Model):
+    """
+    Favorite teams table
+    Each row = one team that one user likes
+    """
+    __tablename__ = 'favorites'
+
+    #Columns
+    id = db.Column (db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
+    team_name = db.Column(db.String(100), nullable = False)
+    sport = db.Colun (db.String(10), nullable = False)
+    created_at = db.Column(db.DateTime, default = datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Favorite {self.team_name}>'
