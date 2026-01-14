@@ -16,7 +16,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(80), unique = True, nullable = False)
     email = db.Column(db.String(120), unique = True, nullable = False)
-    password_hash = db.Column (db.Sring (255), nullable = False)
+    password_hash = db.Column (db.String (255), nullable = False)
     created_at = db.Column (db.DateTime, default = datetime.utcnow)
     
     def __repr__(self):
@@ -33,7 +33,7 @@ class Favorite (db.Model):
     id = db.Column (db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
     team_name = db.Column(db.String(100), nullable = False)
-    sport = db.Colun (db.String(10), nullable = False)
+    sport = db.Column (db.String(10), nullable = False)
     created_at = db.Column(db.DateTime, default = datetime.utcnow)
 
     def __repr__(self):
