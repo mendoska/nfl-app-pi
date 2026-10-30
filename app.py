@@ -1,25 +1,8 @@
 import os
 import requests
 from flask import Flask, render_template 
-from flask_sqlalchemy import SQLAlchemy
-
 
 app = Flask (__name__)
-
-# Configure database
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-later')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///local_dev.db')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Fix Render PostgreSQL URL format
-if app.config['SQLALCHEMY_DATABASE_URI'].startswith('postgres://'):
-    app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'].replace('postgres://', 'postgresql://', 1)
-
-from models import db,User,Favorite
-
-#Initialize database with app 
-db.init_app(app)
-
 
 
 def fetch_espn_games(url):
@@ -122,9 +105,6 @@ def nba():
 	return render_template('index.html', games=games, league = "NBA")
 
 
-#create tables if they dont exist
-with app.app_context():
-	db.create_all()
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5050))  # Render sets PORT
