@@ -5,6 +5,8 @@ A real-time sports scoring application that displays live game data from the ESP
 
 **Live Demo:** https://sports-scoring-app-ksa1.onrender.com/
 
+Please note: Website a cold start of about 1-2 minutes when inactive for 15 minutes, after which will load normally on all platforms. 
+
 
 
 ## Tech Stack
