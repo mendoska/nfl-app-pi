@@ -44,7 +44,10 @@ def fetch_espn_games(url):
 		#now that we have competitors
 		for c in competitors:
 			team_name = c["team"]["displayName"]
-			score = int (c.get("score",0))
+			raw_score = c.get("score")
+			if raw_score in (None,'') :
+				raw_score = 0
+			score = int(raw_score)
 			#learned version, if logo exist -> logo, otherwise empty string to avoid crash
 			logo_url = c["team"].get("logo","")
 
